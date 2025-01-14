@@ -1,0 +1,31 @@
+.itemContainer {
+  list-style-type: none;
+  padding: 17px 0px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  gap: 15px;
+}
+
+.inputTitle {
+  border: none;
+  padding: 3px;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.inputTitleCompleted {
+  font-style: italic;
+  opacity: 0.4;
+  color: #d35e0f;
+  text-decoration: line-through;
+}
+
+.btnDelete {
+  background: #d35e0f;
+  color: #fff;
+  border: 1px solid #d35e0f;
+  padding: 3px 7px;
+  cursor: pointer;
+  float: right;
+  outline: none;
+}

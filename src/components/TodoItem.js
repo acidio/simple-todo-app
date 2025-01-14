@@ -1,24 +1,29 @@
 import React from "react";
 
-const TodoItem = (props) => {
-  const completedStyle = {
-    fontStyle: "italic",
-    color: "#d35e0f",
-    opacity: 0.4,
-    textDecoration: "line-through"
-  };
+import styles from './TodoItem.module.css';
 
-  const { completed, id, title } = props.todo;
+const TodoItem = (props) => {
+  const [inputTitle, setInputTitle] = React.useState(props.todo.title);
+
+  const handleInputTitleChange = (e) => {
+    setInputTitle(e.target.value);
+  }
+
+  const handleTitleUpdate = () => {
+    props.handleChangeProps(props.todo.id, { title: inputTitle });
+  }
+
+  const { completed, id } = props.todo;
 
   return (
-    <li className="todo-item">
+    <li className={styles.itemContainer}>
       <input
         type="checkbox"
         checked={completed}
-        onChange={() => props.handleChangeProps(id)}
+        onChange={() => props.handleToggleTodoProps(id)}
       />
-      <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
-      <span style={completed ? completedStyle : null}>{title}</span>
+      <input type="text" value={inputTitle} onChange={handleInputTitleChange} onBlur={handleTitleUpdate} className={`${styles.inputTitle} ${completed ? styles.inputTitleCompleted : ""}`} />
+      <button onClick={() => props.deleteTodoProps(id)} className={styles.btnDelete}>Delete</button>
     </li>
   );
 }

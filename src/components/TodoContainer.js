@@ -23,7 +23,17 @@ const TodoContainer = () => {
     },
   ]);
 
-  const handleChange = (id) => {
+  const handleChange = (id, props) => {
+    setTodos(todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, ...props };
+      }
+
+      return todo;
+    }));
+  };
+
+  const toggleTodo = (id) => {
     setTodos(todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
@@ -56,6 +66,7 @@ const TodoContainer = () => {
       <TodosList
         todos={todos}
         handleChangeProps={handleChange}
+        handleToggleTodoProps={toggleTodo}
         deleteTodoProps={delTodo}
       />
     </div>
