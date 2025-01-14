@@ -22,8 +22,9 @@ const InputTodo = (props) => {
         value={title}
         name="title"
         onChange={onChange}
+        data-testid="new-todo-input"
       />
-      <input type="submit" className="input-submit" value="Submit" />
+      <input type="submit" className="input-submit" value="Submit" data-testid="new-todo-submit-btn" />
     </form>
   );
 }

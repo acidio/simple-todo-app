@@ -16,13 +16,20 @@ const TodoItem = (props) => {
   const { completed, id } = props.todo;
 
   return (
-    <li className={styles.itemContainer}>
+    <li className={styles.itemContainer} data-testid="todo-item">
       <input
         type="checkbox"
         checked={completed}
         onChange={() => props.handleToggleTodoProps(id)}
       />
-      <input type="text" value={inputTitle} onChange={handleInputTitleChange} onBlur={handleTitleUpdate} className={`${styles.inputTitle} ${completed ? styles.inputTitleCompleted : ""}`} />
+      <input
+        type="text"
+        value={inputTitle}
+        onChange={handleInputTitleChange}
+        onBlur={handleTitleUpdate}
+        data-testid="todo-item-input-title"
+        className={`${styles.inputTitle} ${completed ? styles.inputTitleCompleted : ""}`}
+      />
       <button onClick={() => props.deleteTodoProps(id)} className={styles.btnDelete}>Delete</button>
     </li>
   );
